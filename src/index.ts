@@ -2,6 +2,8 @@ import {Telegraf, Context} from "telegraf"
 import {Message} from "typegram"
 import fs from "fs"
 
+require('dotenv').config();
+
 import fetch from 'node-fetch';
 
 const bot = new Telegraf(process.env.BOT_TOKEN!)
@@ -11,7 +13,7 @@ bot.start((ctx: Context) => ctx.reply('Welcome'))
 bot.command('proxy', async (ctx: Context) => {
     if (ctx.message && 'text' in ctx.message) {
 
-		let data = await fetch(process.env.WEBHOOK, {
+		let data = await fetch(process.env.WEBHOOK!, {
 			method: "POST",
 			body:  JSON.stringify({
 				username: ctx.message.from.first_name,
