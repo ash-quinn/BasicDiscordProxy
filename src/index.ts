@@ -11,7 +11,7 @@ bot.start((ctx: Context) => ctx.reply('Welcome'))
 bot.command('proxy', async (ctx: Context) => {
     if (ctx.message && 'text' in ctx.message) {
 
-		let data = await fetch("https://discord.com/api/webhooks/973234903602851942/SRPGju2LHlRr69yHG8V7g1zhzOFJfKl21f1O3RMaHucZJwvwzU5xYB0kz2yzWDRlnfq8", {
+		let data = await fetch(process.env.WEBHOOK, {
 			method: "POST",
 			body:  JSON.stringify({
 				username: ctx.message.from.first_name,
